@@ -17,11 +17,22 @@ public class GetIndexPageServlet extends HttpServlet {
     }
     
     private static String index = "/WEB-INF/view/index.jsp";
-
+    
+    @Override
+    public void init() throws ServletException {
+        System.out.println("*************SERVLET IS INIT************");
+        System.out.println("FOR PATH '/' WILL RENDER VIEW : " + index);
+    }
+    
+    //Multithreading scope.
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		System.out.println("doGet is work!");
 		request.getRequestDispatcher(index).forward(request, response);
 	}
-
+	
+	@Override
+    public void destroy() {
+        System.out.println("*************SERVLET IS DESTROY************");
+    }
 
 }
